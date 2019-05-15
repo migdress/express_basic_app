@@ -1,0 +1,18 @@
+// This is a placeholder, replace values where appropiate and remove .example
+// extension from this file
+
+const mysql=require('mysql');
+ let connection=mysql.createConnection({
+   host:'HOST'
+   user:'USER',
+   password:'PASSWORD'
+   database:'DB_NAME'
+ });
+connection.connect(function(error){
+   if(!!error){
+     console.error(error);
+   }else{
+     console.log('Connected');
+   }
+ });  
+module.exports = connection; 

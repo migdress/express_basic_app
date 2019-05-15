@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+  <h1><%= title %></h1>
+  <br>
+
+  <% if (messages.error) { %>
+  <p style="color:red"><%- messages.error %></p>
+  <% } %>
+
+  <% if (messages.success) { %>
+  <p class="alert alert-success mt-4"><%- messages.success %></p>
+  <% } %>
+
+  <div class="container">
+    <h2>Add a record</h2>
+  <form action="/add" method="POST">
+    <div class="form-group">
+      <label for="email">Name:</label>
+      <input name="name" type="text" class="form-control" id="name">
+    </div>
+    <div class="form-group">
+      <label for="favorite_color">Favorite color:</label>
+      <select class="form-control" name="favorite_color" id="favorite_color">
+        <option>Red</option>
+        <option>Green</option>
+        <option>Blue</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="cats_or_dogs">Cats or dogs:</label>
+      <select class="form-control" name="cats_or_dogs" id="favorite_color">
+        <option>Cats</option>
+        <option>Dogs</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form></div>
+
+  <hr>
+
+  <div class="container">
+    <h2>Records</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Favorite color</th>
+          <th>Cats or dogs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i = 0; i< data.length; i++) {%>
+        <tr>
+          <td><%= data[i].name%></td>
+          <td><%= data[i].favorite_color%></td>
+          <td><%= data[i].cats_or_dogs%></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

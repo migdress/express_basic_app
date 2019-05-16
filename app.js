@@ -8,6 +8,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const connection = require('./lib/db')
+const dotenv = require('dotenv');
 
 // Table creation
 connection.query(`
@@ -24,9 +25,9 @@ CREATE TABLE IF NOT EXISTS simpleapp (
   console.error(err);
 })
 
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -67,5 +68,10 @@ app.use((err, req, res, next) => {
   res.render('error');
 
 });
+
+dotenv.config();
+let port = process.env.PORT;
+let host = process.env.HOST;
+app.listen(host,port);
 
 module.exports = app;

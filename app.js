@@ -7,8 +7,11 @@ const expressValidator = require('express-validator');
 const flash = require('express-flash');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const connection = require('./lib/db')
+
 const dotenv = require('dotenv');
+dotenv.config();
+
+const connection = require('./lib/db')
 
 // Table creation
 connection.query(`
@@ -69,7 +72,6 @@ app.use((err, req, res, next) => {
 
 });
 
-dotenv.config();
 let port = process.env.PORT;
 let host = process.env.HOST;
 app.listen(host,port);

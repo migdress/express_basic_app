@@ -26,6 +26,4 @@ coverage
 # Benchmarking
 benchmarks/graphs
 
-lib/db.js
-
 .env
